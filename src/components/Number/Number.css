@@ -1,0 +1,13 @@
+.number {
+    width: 60px;
+    text-align: center;
+    border: thin solid #F5F5F5;
+    cursor: pointer;
+    border-radius: 100px;
+    margin: 1px;
+}
+
+.number.selected {
+    background-color: #e76f51;
+    color: #F5F5F5;
+}
