@@ -5,10 +5,9 @@ import Row from "../Row";
 export default function Board() {
 
     return (
-        <div className="board">
+        <section className="board">
             {(() => {
-                let letters = ['B', 'I', 'N', 'G', 'O'];
-                //let letters = ['A', 'J', 'U', 'D', 'E'];
+                let letters = process.env.REACT_APP_HEADER.split('');
                 let components = [];
                 letters.map((letter, index) => {
                     components.push(<Row letter={letter} start={index * 15 + 1} key={index}/>)
@@ -17,6 +16,6 @@ export default function Board() {
 
                 return components;
             })()}
-        </div>
+        </section>
     );
 }

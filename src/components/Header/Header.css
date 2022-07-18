@@ -1,0 +1,7 @@
+.header {
+    width: 1024px;
+    margin: 25px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

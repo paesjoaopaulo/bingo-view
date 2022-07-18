@@ -1,22 +1,47 @@
-import React, {useContext} from "react";
-import './Alert.css';
+import React, {useContext, useEffect, useState} from "react";
 import Context from "../Context";
-import Zoom from 'react-reveal/Zoom';
+import classNames from 'classnames';
+import './Alert.css';
+import Header from "../Header";
 
 export default function Alert() {
-
     const [history] = useContext(Context)
+    const [visible, setVisible] = useState(false);
+    const [message, setMessage] = useState('');
+
+    useEffect(() => {
+        if (history.length > 0) {
+            let last = history[history.length - 1];
+            let lastNumber = last.number;
+            setMessage(lastNumber)
+
+            if (last.event !== 'Selecionado') {
+                setVisible(false)
+            } else {
+                setVisible(true)
+                setTimeout(function () {
+                    setVisible(false);
+                }, 2500)
+            }
+        }
+    }, [history])
+
+    let classes = classNames({
+        alert: true,
+        fadeIn: visible,
+        fadeOut: !visible
+    })
 
     return (
-        <div className="alert">
-            {
-                (() => {
-                    if (history.length > 0) {
-                        let lastNumber = history[history.length - 1].number;
-                        return (<Zoom>{lastNumber}</Zoom>)
-                    }
-                })()
-            }
+        <div className={classes}>
+            <div className="backdrop">
+                <div className="container">
+                    <Header/>
+                    <div className="ball">
+                        {message}
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

@@ -6,7 +6,7 @@ export default function Board() {
     const [history] = useContext(Context);
 
     return (
-        <div className="history">
+        <section className="history">
             <h2>Histórico</h2>
             {(() => {
                 let arraySize = history.length;
@@ -17,6 +17,6 @@ export default function Board() {
 
                 return historiesComponents;
             })()}
-        </div>
+        </section>
     );
 }
